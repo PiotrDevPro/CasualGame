@@ -17,6 +17,7 @@ public class Main : MonoBehaviour
     public GameObject _coinFx;
     public GameObject AnimTraning;
     public GameObject jumpTrig;
+    public GameObject enemySpawn;
     ///public Text coins;
     //public 
 
@@ -24,6 +25,8 @@ public class Main : MonoBehaviour
     public bool isMove = false;
     public bool isCutTheRope = false;
     public bool isGo = false;
+    public bool isAdShowed = false;
+    public bool isShowAds = false;
     private GameObject textActive;
     private GameObject _player;
     private GameObject coin;
@@ -68,22 +71,20 @@ public class Main : MonoBehaviour
         ShopCoins.SetActive(false);
         _Go.SetActive(false);
         _coinFx.SetActive(false);
-        //trainingMouse.SetActive(false);
         textActive = GameObject.Find("Finish");
         _player = GameObject.Find("Default");
-        
         _player.GetComponent<Assets.HeroEditor.Common.CharacterScripts.CharacterFlip>().enabled = false;
+        
         //PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 150);
     }
 
     void Update()
     {
-        print(isCutTheRope);
-         trainingMouse = GameObject.Find("MouseIcon");
         //PlayerPrefs.DeleteAll();
+        //print(isCutTheRope);
+        //print(isGo);
+        trainingMouse = GameObject.Find("MouseIcon");
         Coinz();
-        //print(PlayerPrefs.GetInt("Vibro"));
-
     }
 
     #region Settings
@@ -122,7 +123,7 @@ public class Main : MonoBehaviour
         GameObject soundShopOpen = GameObject.Find("MenuOpen");
         soundShopOpen.GetComponent<AudioSource>().Play();
         Settings.SetActive(true);
-        textActive.SetActive(false);
+        //textActive.SetActive(false);
         
     }
 
@@ -131,7 +132,7 @@ public class Main : MonoBehaviour
         GameObject sound = GameObject.Find("MenuClose");
         sound.GetComponent<AudioSource>().Play();
         Settings.SetActive(false);
-        textActive.SetActive(true);
+       // textActive.SetActive(true);
     }
 
     public void SoundOffOn(Toggle tgl)
@@ -211,15 +212,14 @@ public class Main : MonoBehaviour
         menuGUI.activeSide2.SetActive(false);
         menuGUI.prev.SetActive(false);
         menuGUI.next.SetActive(true);
-        textActive.SetActive(false);
+        //textActive.SetActive(false);
     }
-
     public void ShopClose()
     {
         ShopCoins.SetActive(false);
         menuGUI.paperSide1.SetActive(true);
         menuGUI.paperSide2.SetActive(false);
-        textActive.SetActive(true);
+        //textActive.SetActive(true);
 
     }
     public void NextSide()
@@ -245,34 +245,45 @@ public class Main : MonoBehaviour
 
     #region Game
 
+    void GoButtonPos()
+    {
+        _Go.transform.position = new Vector3(0, 0, 0);
+        // if (PlayerPrefs.GetInt("level") == 3)
+        // {
+        //     _Go.transform.position = new Vector3(0, 0, 0);
+        //  }
+        // else
+        //  {
+        //      
+        //  }
+    }
+
     public void TapToPlay()
     {
-        
         isTapToPlay = true;
-        TapToPlayButton.SetActive(false);
         _Go.SetActive(true);
-        if (PlayerPrefs.GetInt("level") == 3)
-        {
-            _Go.transform.position = new Vector3(0,0,0);
-        }
-        else
-        {
-            _Go.transform.position = new Vector3(0,-5, 0);
-        }
-        
-        GameObject natureSound = GameObject.Find("nature");
-        natureSound.GetComponent<AudioSource>().Play();
-        
-        //AnimTraning.SetActive(true);
+        TapToPlayButton.SetActive(false);
+        IsTapToPlaySetting();
+        GoButtonPos();
+    }
 
-        if (PlayerPrefs.GetInt("Coin") == 0)
+    void IsTapToPlaySetting()
+    {
+        if (PlayerPrefs.GetInt("level") != 5 && PlayerPrefs.GetInt("level") != 6 && PlayerPrefs.GetInt("level") != 7
+            && PlayerPrefs.GetInt("level") != 8)
         {
-            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 10);
+            GameObject natureSound = GameObject.Find("nature");
+            natureSound.GetComponent<AudioSource>().Play();
+        }
+
+        if (PlayerPrefs.GetInt("Coin") == 0 && PlayerPrefs.GetInt("level") == 0)
+        {
+            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 20);
             _coinFx.SetActive(true);
             Invoke("CoinsFxActive", 0.5f);
         }
     }
-    
+
     public void GoStart()
     {
         
@@ -285,11 +296,12 @@ public class Main : MonoBehaviour
     public void Restart()
     {
         isCutTheRope = false;
-        if (PlayerPrefs.GetInt("Coin") >= 10)
+        isAdShowed = false;
+        if (PlayerPrefs.GetInt("Coin") >= 20)
         {
             SceneManager.LoadScene(Application.loadedLevel);
             PlayerPrefs.GetInt("level", PlayerPrefs.GetInt("level"));
-            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") - 10);
+            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") - 20);
         }
         else
         {
@@ -309,7 +321,15 @@ public class Main : MonoBehaviour
 
     public void Coins()
     {
-        PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin")+25);
+        if (!isAdShowed)
+        {
+            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 5);
+        }
+
+        if (isAdShowed)
+        {
+            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 15);
+        }
         _coinFx.SetActive(true);
         Invoke("CoinsFxActive",0.5f);
     }
@@ -336,5 +356,6 @@ public class Main : MonoBehaviour
         coinShop.GetComponent<Text>().text = PlayerPrefs.GetInt("Coin").ToString();
         
     }
+
     #endregion
 }

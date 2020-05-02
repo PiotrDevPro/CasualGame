@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class PlayAnim : MonoBehaviour
 {
-    private GameObject anim;
+    private int a = 0;
+    private void OnMouseDown()
+    {
 
-    private void Start()
-    {
-        anim = GameObject.Find("HelloWord");
+
+        if (Main.manage.isTapToPlay && !Main.manage.isGo )
+        {
+            if (PlayerPrefs.GetInt("level") == 11)
+            {
+                a += 1;
+                GetComponent<Animator>().SetBool("push",true);
+                GameObject sound = GameObject.Find("Push");
+                sound.GetComponent<AudioSource>().Play();
+                
+                if (a==1)
+                {
+                    GetComponent<Animator>().SetTrigger("pushBack");
+                    a =0;
+                }
+            }
+        }
     }
-    public void PlayA()
-    {
-        anim.GetComponent<Animator>().SetTrigger("play");
-    }
-    private void Update()
-    {
-       
-    }
+        
 }

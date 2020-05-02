@@ -16,34 +16,32 @@ public class AdsManager : MonoBehaviour
     private void Awake()
     {
         manage = this;
-        Advertisement.Initialize(gameId, true);
+          Advertisement.Initialize(gameId,true);
 
     }
 
-      void Start()
-     {
-     StartCoroutine(ShowBannerWhenReady());
-      }
+    void Start()
+    {
+         StartCoroutine(ShowBannerWhenReady());
+    }
 
     IEnumerator ShowBannerWhenReady()
     {
         Advertisement.Initialize(gameId);
-        while (!Advertisement.IsReady(placementId)) { yield return new WaitForSeconds(0.5f); }
+        while (!Advertisement.IsReady(placementId)) { yield return new WaitForSeconds(0.3f); }
         Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
         Advertisement.Banner.Show(placementId);
     }
 
 
-    private void Update()
-    {
-    }
 
-     void ShowBanner()
+
+    public void ShowBanner()
     {
       //  while (!Advertisement.IsReady(placementId))
-     //   {
-       //     yield return new WaitForSeconds(0.5f);
-      //  }
+      //  {
+      //      yield return new WaitForSeconds(0.5f);
+       // }
       if (Advertisement.IsReady(placementId) && Advertisement.isInitialized)
         {
             Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
@@ -74,13 +72,16 @@ public class AdsManager : MonoBehaviour
         switch (result)
         {
             case ShowResult.Finished:
+                Main.manage.isAdShowed = true;
                 Main.manage.Coins();
                 break;
             case ShowResult.Skipped:
-                print("Skipped");
+                PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 0);
+                Main.manage.isAdShowed = false;
                 break;
             case ShowResult.Failed:
-                print("Failed");
+                PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 0);
+                Main.manage.isAdShowed = false;
                 break;
         }
     }
@@ -101,10 +102,18 @@ public class AdsManager : MonoBehaviour
         }
     }
 
-    public void CoinX2()
+    public void CoinX4()
     {
         ShowAd();
+        Main.manage.isAdShowed = true;
         GameObject ButtnCoin = GameObject.Find("x2Coin");
         ButtnCoin.SetActive(false);
     }
+    public void CoinAdRewerded()
+    {
+        ShowAd();
+       // Main.manage.isAdShowed = true;
+        PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 5);
+    }
 }
+
