@@ -9,8 +9,9 @@ public class GoAway : MonoBehaviour
     private GameObject clinn;
     private GameObject clinn1;
     private GameObject clinn2;
+    private GameObject clin_level5;
     private GameObject clin_level10;
-    private GameObject clin_level12;
+    private GameObject clin_level18;
     private int n = 0;
     public bool isFailed = false;
     
@@ -23,15 +24,16 @@ public class GoAway : MonoBehaviour
         clinn = GameObject.Find("clinH");
         clinn1 = GameObject.Find("ClinH1");
         clinn2 = GameObject.Find("clin (7)");
+        clin_level5 = GameObject.Find("clinBoat");
         clin_level10 = GameObject.Find("clinVertical");
-        //clin_level10 = GameObject.Find("clinVertical");
+        clin_level18 = GameObject.Find("clinMainn");
     }
 
 
     void OnMouseDown()
     {
 
-        if (Main.manage.isTapToPlay && !Main.manage.isGo)
+        if (Main.manage.isTapToPlay && !Main.manage.isGo && !Main.manage.IsSettingActive)
         {
             // n = 0;
             if (PlayerPrefs.GetInt("level") == 0)
@@ -47,10 +49,11 @@ public class GoAway : MonoBehaviour
                 GetComponent<AudioSource>().Play();
                 GetComponent<Animator>().SetTrigger("Push");
             }
-            if (PlayerPrefs.GetInt("level") == 4)
+            if (PlayerPrefs.GetInt("level") == 4 && !PlayerController.manage.isDead)
             {
                 GetComponent<AudioSource>().Play();
                 GetComponent<Animator>().SetTrigger("push");
+               
             }
 
             if (PlayerPrefs.GetInt("level") == 5)
@@ -87,8 +90,9 @@ public class GoAway : MonoBehaviour
             }
             if (PlayerPrefs.GetInt("level") == 9)
             {
-                GetComponent<AudioSource>().Play();
-                GetComponent<Animator>().SetBool("push", true);
+                GameObject sound = GameObject.Find("Push");
+                sound.GetComponent<AudioSource>().Play();
+                GetComponent<Animator>().SetTrigger("push");
 
             }
             if (PlayerPrefs.GetInt("level") == 10)
@@ -101,8 +105,8 @@ public class GoAway : MonoBehaviour
             {
                 GetComponent<Animator>().SetBool("push", true);
                 GetComponent<AudioSource>().Play();
-                GameObject clinnn = GameObject.Find("clin");
-                GameObject clinnn2 = GameObject.Find("clin (5)");
+                GameObject clinnn = GameObject.Find("clinTop");
+               // GameObject clinnn2 = GameObject.Find("clin (5)");
 
                 if (clinnn.GetComponent<Transform>().position.x > 1)
                 {
@@ -116,17 +120,7 @@ public class GoAway : MonoBehaviour
                     GetComponent<Animator>().SetTrigger("pushBack");
                     GetComponent<Animator>().SetBool("push", false);
                 }
-                
-                //  if (clinnn2.GetComponent<Transform>().position.x > 1)
-                //  {
-                //      GetComponent<AudioSource>().Play();
-                //      GetComponent<Animator>().SetBool("push", true);
-                //  }
-                //  if (clinnn2.GetComponent<Transform>().position.x < -0)
-                //  {
-                //     GetComponent<Animator>().SetTrigger("pushBack");
-                //      GetComponent<Animator>().SetBool("push", false);
-                // }
+               
             }
 
             if (PlayerPrefs.GetInt("level") == 12)
@@ -154,26 +148,109 @@ public class GoAway : MonoBehaviour
                 GetComponent<Animator>().SetBool("push", true);
 
             }
+
+            if (PlayerPrefs.GetInt("level") == 16)
+            {
+                GameObject sound = GameObject.Find("Push");
+                sound.GetComponent<AudioSource>().Play();
+                GetComponent<Animator>().SetTrigger("Push");
+            }
+
+            if (PlayerPrefs.GetInt("level") == 17)
+            {
+                GameObject sound = GameObject.Find("Push");
+                sound.GetComponent<AudioSource>().Play();
+                GetComponent<Animator>().SetTrigger("push");
+
+            }
+            if (PlayerPrefs.GetInt("level") == 18)
+            {
+                GameObject sound = GameObject.Find("Push");
+                sound.GetComponent<AudioSource>().Play();
+                GetComponent<Animator>().SetTrigger("push");
+            }
+
+            if (PlayerPrefs.GetInt("level") == 19)
+            {
+                GameObject sound = GameObject.Find("hardPush");
+                sound.GetComponent<AudioSource>().Play();
+                GetComponent<Animator>().SetTrigger("push");
+            }
+
+            if (PlayerPrefs.GetInt("level") == 20)
+            {
+                GameObject sound = GameObject.Find("Push");
+                sound.GetComponent<AudioSource>().Play();
+                GetComponent<Animator>().SetTrigger("push");
+            }
+
+            if (PlayerPrefs.GetInt("level") == 22)
+            {
+                GameObject sound = GameObject.Find("Push");
+                sound.GetComponent<AudioSource>().Play();
+                GetComponent<Animator>().SetTrigger("push");
+            }
+            if (PlayerPrefs.GetInt("level") == 23)
+            {
+                GameObject sound = GameObject.Find("Push");
+                sound.GetComponent<AudioSource>().Play();
+                GetComponent<Animator>().SetTrigger("push");
+            }
+
+            if (PlayerPrefs.GetInt("level") == 24)
+            {
+                GameObject sound = GameObject.Find("hardPush");
+                sound.GetComponent<AudioSource>().Play();
+                GetComponent<Animator>().SetTrigger("push");
+            }
+
+            if (PlayerPrefs.GetInt("level") == 25)
+            {
+                GameObject sound = GameObject.Find("hardPush");
+                sound.GetComponent<AudioSource>().Play();
+                GetComponent<Animator>().SetTrigger("push");
+            }
+
+            if (PlayerPrefs.GetInt("level") == 26)
+            {
+                GameObject sound = GameObject.Find("hardPush");
+                sound.GetComponent<AudioSource>().Play();
+                GetComponent<Animator>().SetTrigger("push");
+            }
+            if (PlayerPrefs.GetInt("level") == 27)
+            {
+                GameObject sound = GameObject.Find("hardPush");
+                sound.GetComponent<AudioSource>().Play();
+                GetComponent<Animator>().SetTrigger("push");
+            }
+            if (PlayerPrefs.GetInt("level") == 28)
+            {
+                GameObject sound = GameObject.Find("hardPush");
+                sound.GetComponent<AudioSource>().Play();
+                GetComponent<Animator>().SetTrigger("push");
+            }
+            
+
         }
     }
 
     void Lose()
     {
-        if (PlayerPrefs.GetInt("level") == 12) {
-            {
-                if (clinn2.transform.position.x >= 5f)
-                    isFailed = true;
+        //if (PlayerPrefs.GetInt("level") == 12) {
+       //     {
+        //        if (clinn2.transform.position.x >= 5f)
+         //           isFailed = true;
+            //
+       //     }
+      //  }
 
-            }
-        }
-
-        if (PlayerPrefs.GetInt("level") == 9)
-        {
-            if (clin_level10.GetComponent<Transform>().position.x <= -3f)
-            {
-                isFailed = true;
-            }
-        }
+     //   if (PlayerPrefs.GetInt("level") == 17)
+      //  {
+          //  if (clin_level10.GetComponent<Transform>().position.x <= -3f)
+          //  {
+            //    isFailed = true;
+          //  }
+       // }
 
         if (PlayerPrefs.GetInt("level") == 11)
         {
@@ -183,24 +260,58 @@ public class GoAway : MonoBehaviour
             }
         }
 
-        if(PlayerPrefs.GetInt("level") == 8)
+       // if(PlayerPrefs.GetInt("level") == 8)
+       // {
+          //  if (clinn.transform.position.x >= 2f && clinn1.transform.position.x < 0 | Rope2DMouseCutter.count == 0) //&& clinn2.transform.position.y >= -2.89f)
+          //  {
+          //      isFailed = true;
+          //  }
+      //  }
+    }
+
+    void ActiveJumpTrigger()
+    {
+        
+        if(PlayerPrefs.GetInt("level") == 9)
         {
-            if (clinn.transform.position.x >= 6f && clinn1.transform.position.x < 0 | Rope2DMouseCutter.count == 0) //&& clinn2.transform.position.y >= -2.89f)
+            if(clin_level18.GetComponent<Transform>().position.x < -8f)
             {
+                GameObject jumpTrg = GameObject.Find("endTrig");
+                jumpTrg.GetComponent<BoxCollider>().enabled = true;
                 isFailed = true;
-            }
+                
+            } 
         }
     }
+
     private void Update()
     {
-        print(clinn1.transform.position.x);
-
-        //print(clin_level10.GetComponent<Transform>().position.x);
-        if (PlayerPrefs.GetInt("level") == 8 || PlayerPrefs.GetInt("level") == 12 || PlayerPrefs.GetInt("level") == 9)
+       
+        if (PlayerPrefs.GetInt("level") == 8 || PlayerPrefs.GetInt("level") == 17)
         {
             Lose();
         }
-        
+
+
+        if (PlayerPrefs.GetInt("level") == 17)
+        {
+            if (clin_level10.GetComponent<Transform>().position.x <= -3f)
+            {
+                GameObject dedTrig = GameObject.Find("DeadTrig");
+                dedTrig.GetComponent<BoxCollider>().enabled = true;
+                
+            }
+        }
 
     }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if(col.collider.name == "lsg")
+        {
+            
+        }
+    }
+
+
 }

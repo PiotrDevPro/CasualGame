@@ -13,10 +13,26 @@ public class Drop : MonoBehaviour
             drp.GetComponent<AudioSource>().Play();
             GameObject boxActive = GameObject.Find("box (1)");
             GameObject crtLayer = GameObject.Find("crate");
+            
+
             if (PlayerPrefs.GetInt("level") == 13){
                 crtLayer.GetComponent<BoxCollider>().tag = "Untagged";
             }
-            //crtLayer.GetComponent<SpriteRenderer>().sortingOrder = 2;
+
+            
+
+            if (PlayerPrefs.GetInt("level") == 28)
+            {
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+            }
+
+            if (PlayerPrefs.GetInt("level") == 13)
+            {
+                GetComponent<BoxCollider>().isTrigger = true;
+                Destroy(gameObject, 6f);
+            }
+
+
         }
 
         if (collision.collider.tag == "Player")
@@ -51,6 +67,7 @@ public class Drop : MonoBehaviour
             GameObject boxtrigActive = GameObject.Find("BoxTrig");
             boxtrigActive.GetComponent<BoxCollider>().enabled = false;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+
             
         }
         if(collision.collider.name == "box (1)")
@@ -63,6 +80,7 @@ public class Drop : MonoBehaviour
             boxActive.AddComponent<Rigidbody>().mass = 10;
             boxActive.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
             boxActive.GetComponent<BoxCollider>().tag = "Death";
+
             
         }
 
@@ -85,7 +103,31 @@ public class Drop : MonoBehaviour
         if (col.name == "loseTrig")
         {
             GoAway.manage.isFailed = true;
-            print("loses");
+            
+        }
+
+        if (col.name == "DeadTrig")
+        {
+            GameObject dedTrig = GameObject.Find("DeadTrig");
+            dedTrig.GetComponent<BoxCollider>().enabled = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name == "DeadTrig")
+        {
+            GameObject dedTrig = GameObject.Find("DeadTrig");
+            dedTrig.GetComponent<BoxCollider>().enabled = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.name == "DeadTrig")
+        {
+            GameObject dedTrig1 = GameObject.Find("DeadTrig");
+            dedTrig1.GetComponent<BoxCollider>().enabled = true;
         }
     }
 

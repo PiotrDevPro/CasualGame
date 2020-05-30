@@ -14,10 +14,12 @@ public class Main : MonoBehaviour
     public GameObject ShopCoins;
     public GameObject TapToPlayButton;
     public GameObject _Go;
+    public GameObject QstPanel;
     public GameObject _coinFx;
     public GameObject AnimTraning;
     public GameObject jumpTrig;
     public GameObject enemySpawn;
+    public GameObject NoAdsBtn;
     ///public Text coins;
     //public 
 
@@ -27,6 +29,8 @@ public class Main : MonoBehaviour
     public bool isGo = false;
     public bool isAdShowed = false;
     public bool isShowAds = false;
+    public bool IsSettingActive = false;
+    bool isShopOpening = false;
     private GameObject textActive;
     private GameObject _player;
     private GameObject coin;
@@ -71,29 +75,28 @@ public class Main : MonoBehaviour
         ShopCoins.SetActive(false);
         _Go.SetActive(false);
         _coinFx.SetActive(false);
-        textActive = GameObject.Find("Finish");
+        QstPanel.SetActive(false);
         _player = GameObject.Find("Default");
         _player.GetComponent<Assets.HeroEditor.Common.CharacterScripts.CharacterFlip>().enabled = false;
-        
         //PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 150);
+        if (PlayerPrefs.GetInt("NoAds") == 1)
+        {
+            NoAdsBtn.SetActive(false);
+        }
     }
 
     void Update()
     {
         //PlayerPrefs.DeleteAll();
-        //print(isCutTheRope);
-        //print(isGo);
         trainingMouse = GameObject.Find("MouseIcon");
         Coinz();
+
     }
 
     #region Settings
     public void SettingsOpen()
     {
-        
-        
 
-        
         if (PlayerPrefs.GetInt("Sound") == 0)
         {
             menuGUI.mainSound.SetActive(true);
@@ -123,16 +126,16 @@ public class Main : MonoBehaviour
         GameObject soundShopOpen = GameObject.Find("MenuOpen");
         soundShopOpen.GetComponent<AudioSource>().Play();
         Settings.SetActive(true);
-        //textActive.SetActive(false);
-        
+        IsSettingActive = true;
+
     }
 
     public void SettingsClose()
     {
         GameObject sound = GameObject.Find("MenuClose");
         sound.GetComponent<AudioSource>().Play();
+        IsSettingActive = false;
         Settings.SetActive(false);
-       // textActive.SetActive(true);
     }
 
     public void SoundOffOn(Toggle tgl)
@@ -205,6 +208,8 @@ public class Main : MonoBehaviour
 
     public void ShopOpen()
     {
+        isShopOpening = true;
+        IsSettingActive = true;
         GameObject sound = GameObject.Find("MenuOpen");
         sound.GetComponent<AudioSource>().Play();
         ShopCoins.SetActive(true);
@@ -216,6 +221,8 @@ public class Main : MonoBehaviour
     }
     public void ShopClose()
     {
+        isShopOpening = false;
+        IsSettingActive = false;
         ShopCoins.SetActive(false);
         menuGUI.paperSide1.SetActive(true);
         menuGUI.paperSide2.SetActive(false);
@@ -247,7 +254,8 @@ public class Main : MonoBehaviour
 
     void GoButtonPos()
     {
-        _Go.transform.position = new Vector3(0, 0, 0);
+        _Go.transform.position = new Vector2(_player.transform.position.x, _player.transform.position.y - 0.5f);
+        QstPanel.transform.position = new Vector2(_player.transform.position.x + 0.3f, _player.transform.position.y + 1.7f);
         // if (PlayerPrefs.GetInt("level") == 3)
         // {
         //     _Go.transform.position = new Vector3(0, 0, 0);
@@ -262,6 +270,9 @@ public class Main : MonoBehaviour
     {
         isTapToPlay = true;
         _Go.SetActive(true);
+        QstPanel.SetActive(true);
+        GameObject animm = GameObject.Find("quest");
+        animm.GetComponentInChildren<Animator>().SetBool("active",true);
         TapToPlayButton.SetActive(false);
         IsTapToPlaySetting();
         GoButtonPos();
@@ -270,27 +281,46 @@ public class Main : MonoBehaviour
     void IsTapToPlaySetting()
     {
         if (PlayerPrefs.GetInt("level") != 5 && PlayerPrefs.GetInt("level") != 6 && PlayerPrefs.GetInt("level") != 7
-            && PlayerPrefs.GetInt("level") != 8)
+            && PlayerPrefs.GetInt("level") != 8 && PlayerPrefs.GetInt("level") != 9 && PlayerPrefs.GetInt("level") != 21 && PlayerPrefs.GetInt("level") != 22)
         {
             GameObject natureSound = GameObject.Find("nature");
             natureSound.GetComponent<AudioSource>().Play();
         }
-
+        PlayerController.manage._startTime = true;
+        levelGenerated.manage.TimerSpawn();
         if (PlayerPrefs.GetInt("Coin") == 0 && PlayerPrefs.GetInt("level") == 0)
         {
             PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 20);
             _coinFx.SetActive(true);
             Invoke("CoinsFxActive", 0.5f);
         }
+        if (PlayerPrefs.GetInt("level") == 2)
+        {
+            GameObject cursorr = GameObject.Find("cursorr1");
+            cursorr.SetActive(false);
+        }
+
+        if (PlayerPrefs.GetInt("level") == 4)
+        {
+            GameObject cursorr1 = GameObject.Find("cursorr");
+            cursorr1.SetActive(false);
+            GameObject cursorrHorizontal = GameObject.Find("cursorVert");
+            cursorrHorizontal.SetActive(false);
+        }
+
     }
 
     public void GoStart()
     {
-        
         isMove = true;
+        GameObject animm = GameObject.Find("quest");
+        animm.GetComponentInChildren<Animator>().SetBool("active", false);
         _Go.SetActive(false);
+        QstPanel.SetActive(false);
         isCutTheRope = true;
         isGo = true;
+
+
     }
 
     public void Restart()
@@ -307,7 +337,6 @@ public class Main : MonoBehaviour
         {
             Invoke("EnoughMoney",0.03f); 
         }
-        
     }
 
     void EnoughMoney()
@@ -319,20 +348,28 @@ public class Main : MonoBehaviour
         
     }
 
+    public void MoreMoney()
+    {
+       // if (PlayerPrefs.GetInt("level") == 0)
+       // {
+            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 1000);
+            _coinFx.SetActive(true);
+            Invoke("CoinsFxActive", 0.5f);
+        //}
+    }
+
     public void Coins()
     {
-        if (!isAdShowed)
-        {
-            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 5);
-        }
-
-        if (isAdShowed)
-        {
-            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 15);
-        }
+  
+        PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 5);
         _coinFx.SetActive(true);
         Invoke("CoinsFxActive",0.5f);
     }
+    public void NoAdsButtonActive()
+    {
+        NoAdsBtn.SetActive(false);
+    }
+   // public void Coin
 
      void CoinsFxActive()
     {
@@ -351,10 +388,12 @@ public class Main : MonoBehaviour
             PlayerPrefs.SetInt("Coin", 0);
         }
         coin = GameObject.Find("coinTx");
-        coinShop = GameObject.Find("shopCoinTx");
         coin.GetComponent<Text>().text = PlayerPrefs.GetInt("Coin").ToString();
-        coinShop.GetComponent<Text>().text = PlayerPrefs.GetInt("Coin").ToString();
-        
+        if (isShopOpening)
+        {
+            coinShop = GameObject.Find("shopCoinTx");
+            coinShop.GetComponent<Text>().text = PlayerPrefs.GetInt("Coin").ToString();
+        }
     }
 
     #endregion
