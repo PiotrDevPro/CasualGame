@@ -7,10 +7,12 @@ public class gold500 : MonoBehaviour
 {
     public void OnPurchaseComplete(Product product)
     {
-        FbManager.manage.Gold500(500);
+        
         PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + 500);
         Main.manage._coinFx.SetActive(true);
+        //FbManager.manage.Gold500(500);
         Invoke("TimeToDeactivate", 0.5f);
+        Amplitude.Instance.logRevenue("com.mystream.taptapboyboy.gold500", 1, 1.99);
     }
 
     public void OnPurchaseFailure(Product product, PurchaseFailureReason reason)

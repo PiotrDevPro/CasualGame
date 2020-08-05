@@ -33,7 +33,7 @@ public class GoAway : MonoBehaviour
     void OnMouseDown()
     {
 
-        if (Main.manage.isTapToPlay && !Main.manage.isGo && !Main.manage.IsSettingActive)
+        if (Main.manage.isTapToPlay && !Main.manage.isGo && !Main.manage.IsSettingActive && !Main.manage.isSkinShopActive)
         {
             // n = 0;
             if (PlayerPrefs.GetInt("level") == 0)
@@ -229,28 +229,39 @@ public class GoAway : MonoBehaviour
                 sound.GetComponent<AudioSource>().Play();
                 GetComponent<Animator>().SetTrigger("push");
             }
-            
+        }
 
+        if (PlayerPrefs.GetInt("level") == 30)
+        {
+            GameObject sound = GameObject.Find("hardPush");
+            sound.GetComponent<AudioSource>().Play();
+            GetComponent<Animator>().SetTrigger("push");
+        }
+
+        if (PlayerPrefs.GetInt("level") == 32)
+        {
+            GameObject sound = GameObject.Find("hardPush");
+            sound.GetComponent<AudioSource>().Play();
+            GetComponent<Animator>().SetTrigger("push");
+        }
+
+        if (PlayerPrefs.GetInt("level") == 33)
+        {
+            GameObject sound = GameObject.Find("hardPush");
+            sound.GetComponent<AudioSource>().Play();
+            GetComponent<Animator>().SetTrigger("push");
         }
     }
 
     void Lose()
     {
         //if (PlayerPrefs.GetInt("level") == 12) {
-       //     {
+        //     {
         //        if (clinn2.transform.position.x >= 5f)
-         //           isFailed = true;
-            //
-       //     }
-      //  }
-
-     //   if (PlayerPrefs.GetInt("level") == 17)
-      //  {
-          //  if (clin_level10.GetComponent<Transform>().position.x <= -3f)
-          //  {
-            //    isFailed = true;
-          //  }
-       // }
+        //           isFailed = true;
+        //
+        //     }
+        //  }
 
         if (PlayerPrefs.GetInt("level") == 11)
         {
@@ -259,14 +270,6 @@ public class GoAway : MonoBehaviour
                 isFailed = true;
             }
         }
-
-       // if(PlayerPrefs.GetInt("level") == 8)
-       // {
-          //  if (clinn.transform.position.x >= 2f && clinn1.transform.position.x < 0 | Rope2DMouseCutter.count == 0) //&& clinn2.transform.position.y >= -2.89f)
-          //  {
-          //      isFailed = true;
-          //  }
-      //  }
     }
 
     void ActiveJumpTrigger()

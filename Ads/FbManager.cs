@@ -5,16 +5,21 @@ using Facebook.Unity;
 
 public class FbManager : MonoBehaviour
 {
+
     public static FbManager manage;
 
-      void Awake()
+    
+    void Awake()
       {
          manage = this;
-            if (!FB.IsInitialized)
+        
+        if (!FB.IsInitialized)
             {
            //Initialize the Facebook SDK
               FB.Init(InitCallback, OnHideUnity);
-           }
+            
+
+        }
             else
             {
           //s Already initialized, signal an app activation App Event
@@ -162,6 +167,116 @@ public class FbManager : MonoBehaviour
              parameters: tutParams
          );
         print("Levels Finish: " + level);
+    }
+
+    public void SettingOpen(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Number"] = gold.ToString();
+
+        FB.LogAppEvent(
+             "Options Open",
+             parameters: tutParams
+         );
+    }
+
+    public void SettingClose(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Number"] = gold.ToString();
+
+        FB.LogAppEvent(
+             "Options Close",
+             parameters: tutParams
+         );
+    }
+
+    public void Shop(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Number"] = gold.ToString();
+
+        FB.LogAppEvent(
+             "Shop",
+             parameters: tutParams
+         );
+    }
+
+    public void MusicOff(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Number"] = gold.ToString();
+
+        FB.LogAppEvent(
+             "MusicOFF",
+             parameters: tutParams
+         );
+    }
+
+    public void MusicOn(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Number"] = gold.ToString();
+
+        FB.LogAppEvent(
+             "MusicON",
+             parameters: tutParams
+         );
+    }
+
+    public void SoundOff(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Number"] = gold.ToString();
+
+        FB.LogAppEvent(
+             "SoundOFF",
+             parameters: tutParams
+         );
+    }
+
+    public void SoundOn(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Number"] = gold.ToString();
+
+        FB.LogAppEvent(
+             "SoundON",
+             parameters: tutParams
+         );
+    }
+
+    public void VibroOff(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Number"] = gold.ToString();
+
+        FB.LogAppEvent(
+             "VibroOFF",
+             parameters: tutParams
+         );
+    }
+
+    public void VibroOn(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Number"] = gold.ToString();
+
+        FB.LogAppEvent(
+             "VibroON",
+             parameters: tutParams
+         );
+    }
+
+    public void ResetAll(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Number"] = gold.ToString();
+
+        FB.LogAppEvent(
+             "ResetALL",
+             parameters: tutParams
+         );
     }
 
     #endregion
@@ -892,7 +1007,1509 @@ public class FbManager : MonoBehaviour
     }
 
     #endregion
+
+    #region Level Next
+
+    public void level1Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 1 Next",
+            parameters: tutParams
+         );
+        print("level 1 Next: " + gold + " Coins");
+    }
+
+    public void level2Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 2 Next",
+            parameters: tutParams
+         );
+        print("level 2 Next: " + gold + " Coins");
+    }
+
+    public void level3Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 3 Next",
+            parameters: tutParams
+         );
+        print("level 3 Next: " + gold + " Coins");
+    }
+
+    public void level4Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 4 Next",
+            parameters: tutParams
+         );
+        print("level 4 Next: " + gold + " Coins");
+    }
+
+    public void level5Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 5 Next",
+            parameters: tutParams
+         );
+        print("level 5 Next: " + gold + " Coins");
+    }
+
+    public void level6Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 6 Next",
+            parameters: tutParams
+         );
+        print("level 6 Next: " + gold + " Coins");
+    }
+
+    public void level7Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 7 Next",
+            parameters: tutParams
+         );
+        print("level 7 Next: " + gold + " Coins");
+    }
+
+    public void level8Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 8 Next",
+            parameters: tutParams
+         );
+        print("level 8 Next: " + gold + " Coins");
+    }
+
+    public void level9Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 9 Next",
+            parameters: tutParams
+         );
+        print("level 9 Next: " + gold + " Coins");
+    }
+
+    public void level10Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 10 Next",
+            parameters: tutParams
+         );
+        print("level 10 Next: " + gold + " Coins");
+    }
+
+    public void level11Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 11 Next",
+            parameters: tutParams
+         );
+        print("level 11 Next: " + gold + " Coins");
+    }
+
+    public void level12Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 12 Next",
+            parameters: tutParams
+         );
+        print("level 12 Next: " + gold + " Coins");
+    }
+
+    public void level13Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 13 Next",
+            parameters: tutParams
+         );
+        print("level 13 Next: " + gold + " Coins");
+    }
+
+    public void level14Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 14 Next",
+            parameters: tutParams
+         );
+        print("level 14 Next: " + gold + " Coins");
+    }
+
+    public void level15Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 15 Next",
+            parameters: tutParams
+         );
+        print("level 15 Next: " + gold + " Coins");
+    }
+
+    public void level16Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 16 Next",
+            parameters: tutParams
+         );
+        print("level 16 Next: " + gold + " Coins");
+    }
+
+    public void level17Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 17 Next",
+            parameters: tutParams
+         );
+        print("level 17 Next: " + gold + " Coins");
+    }
+
+    public void level18Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 18 Next",
+            parameters: tutParams
+         );
+        print("level 18 Next: " + gold + " Coins");
+    }
+
+    public void level19Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 19 Next",
+            parameters: tutParams
+         );
+        print("level 19 Next: " + gold + " Coins");
+    }
+
+    public void level20Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 20 Next",
+            parameters: tutParams
+         );
+        print("level 20 Next: " + gold + " Coins");
+    }
+
+    public void level21Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 21 Next",
+            parameters: tutParams
+         );
+        print("level 21 Next: " + gold + " Coins");
+    }
+
+    public void level22Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 22 Next",
+            parameters: tutParams
+         );
+        print("level 22 Next: " + gold + " Coins");
+    }
+
+    public void level23Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 23 Next",
+            parameters: tutParams
+         );
+        print("level 23 Next: " + gold + " Coins");
+    }
+
+    public void level24Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 24 Next",
+            parameters: tutParams
+         );
+        print("level 24 Next: " + gold + " Coins");
+    }
+
+    public void level25Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 25 Next",
+            parameters: tutParams
+         );
+        print("level 25 Next: " + gold + " Coins");
+    }
+
+    public void level26Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 26 Next",
+            parameters: tutParams
+         );
+        print("level 26 Next: " + gold + " Coins");
+    }
+
+    public void level27Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 27 Next",
+            parameters: tutParams
+         );
+        print("level 27 Next: " + gold + " Coins");
+    }
+
+    public void level28Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 28 Next",
+            parameters: tutParams
+         );
+        print("level 28 Next: " + gold + " Coins");
+    }
+
+    public void level29Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 29 Next",
+            parameters: tutParams
+         );
+        print("level 29 Next: " + gold + " Coins");
+    }
+
+    public void level30Next(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 30 Next",
+            parameters: tutParams
+         );
+        print("level 30 Next: " + gold + " Coins");
+    }
+
+    #endregion
+
+    #region Level CoinX4
+
+    public void level1CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 1 Coin4x",
+            parameters: tutParams
+         );
+        print("level 1 Coin4x: " + gold + " Coins");
+    }
+
+    public void level2CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 2 Coin4x",
+            parameters: tutParams
+         );
+        print("level 2 Coin4x: " + gold + " Coins");
+    }
+
+    public void level3CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 3 Coin4x",
+            parameters: tutParams
+         );
+        print("level 3 Coin4x: " + gold + " Coins");
+    }
+
+    public void level4CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 4 Coin4x",
+            parameters: tutParams
+         );
+        print("level 4 Coin4x: " + gold + " Coins");
+    }
+
+    public void level5CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 5 Coin4x",
+            parameters: tutParams
+         );
+        print("level 5 Coin4x: " + gold + " Coins");
+    }
+
+    public void level6CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 6 Coin4x",
+            parameters: tutParams
+         );
+        print("level 6 Coin4x: " + gold + " Coins");
+    }
+
+    public void level7CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 7 Coin4x",
+            parameters: tutParams
+         );
+        print("level 7 Coin4x: " + gold + " Coins");
+    }
+
+    public void level8CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 8 Coin4x",
+            parameters: tutParams
+         );
+        print("level 8 Coin4x: " + gold + " Coins");
+    }
+
+    public void level9CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 9 Coin4x",
+            parameters: tutParams
+         );
+        print("level 9 Coin4x: " + gold + " Coins");
+    }
+
+    public void level10CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 10 Coin4x",
+            parameters: tutParams
+         );
+        print("level 10 Coin4x: " + gold + " Coins");
+    }
+
+    public void level11CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 11 Coin4x",
+            parameters: tutParams
+         );
+        print("level 11 Coin4x: " + gold + " Coins");
+    }
+
+    public void level12CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 12 Coin4x",
+            parameters: tutParams
+         );
+        print("level 12 Coin4x: " + gold + " Coins");
+    }
+
+    public void level13CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 13 Coin4x",
+            parameters: tutParams
+         );
+        print("level 13 Coin4x: " + gold + " Coins");
+    }
+
+    public void level14CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 14 Coin4x",
+            parameters: tutParams
+         );
+        print("level 14 Coin4x: " + gold + " Coins");
+    }
+
+    public void level15CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 15 Coin4x",
+            parameters: tutParams
+         );
+        print("level 15 Coin4x: " + gold + " Coins");
+    }
+
+    public void level16CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 16 Coin4x",
+            parameters: tutParams
+         );
+        print("level 16 Coin4x: " + gold + " Coins");
+    }
+
+    public void level17CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 17 Coin4x",
+            parameters: tutParams
+         );
+        print("level 17 Coin4x: " + gold + " Coins");
+    }
+
+    public void level18CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 18 Coin4x",
+            parameters: tutParams
+         );
+        print("level 18 Coin4x: " + gold + " Coins");
+    }
+
+    public void level19CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 19 Coin4x",
+            parameters: tutParams
+         );
+        print("level 19 Coin4x: " + gold + " Coins");
+    }
+
+    public void level20CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 20 Coin4x",
+            parameters: tutParams
+         );
+        print("level 20 Coin4x: " + gold + " Coins");
+    }
+
+    public void level21CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 21 Coin4x",
+            parameters: tutParams
+         );
+        print("level 21 Coin4x: " + gold + " Coins");
+    }
+
+    public void level22CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 22 Coin4x",
+            parameters: tutParams
+         );
+        print("level 22 Coin4x: " + gold + " Coins");
+    }
+
+    public void level23CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 23 Coin4x",
+            parameters: tutParams
+         );
+        print("level 23 Coin4x: " + gold + " Coins");
+    }
+
+    public void level24CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 24 Coin4x",
+            parameters: tutParams
+         );
+        print("level 24 Coin4x: " + gold + " Coins");
+    }
+
+    public void level25CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 25 Coin4x",
+            parameters: tutParams
+         );
+        print("level 25 Coin4x: " + gold + " Coins");
+    }
+
+    public void level26CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 26 Coin4x",
+            parameters: tutParams
+         );
+        print("level 26 Coin4x: " + gold + " Coins");
+    }
+
+    public void level27CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 27 Coin4x",
+            parameters: tutParams
+         );
+        print("level 27 Coin4x: " + gold + " Coins");
+    }
+
+    public void level28CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 28 Coin4x",
+            parameters: tutParams
+         );
+        print("level 28 Coin4x: " + gold + " Coins");
+    }
+
+    public void level29CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 29 Coin4x",
+            parameters: tutParams
+         );
+        print("level 29 Coin4x: " + gold + " Coins");
+    }
+
+    public void level30CoinX4(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 30 Coin4x",
+            parameters: tutParams
+         );
+        print("level 30 Coin4x: " + gold + " Coins");
+    }
+
+    #endregion
+
+    #region Play
+    public void level1Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 1 Play",
+            parameters: tutParams
+         );
+    //    print("level 1 Play: " + gold + " Coins");
+    }
+
+    public void level2Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 2 Play",
+            parameters: tutParams
+         );
+    //    print("level 2 Play: " + gold + " Coins");
+    }
+
+    public void level3Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 3 Play",
+            parameters: tutParams
+         );
+     //   print("level 3 Play: " + gold + " Coins");
+    }
+
+    public void level4Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 4 Play",
+            parameters: tutParams
+         );
+      //  print("level 4 Play: " + gold + " Coins");
+    }
+
+    public void level5Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 5 Play",
+            parameters: tutParams
+         );
+       // print("level 5 Play: " + gold + " Coins");
+    }
+
+    public void level6Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 6 Play",
+            parameters: tutParams
+         );
+      //  print("level 6 Play: " + gold + " Coins");
+    }
+
+    public void level7Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 7 Play",
+            parameters: tutParams
+         );
+      //  print("level 7 Play: " + gold + " Coins");
+    }
+
+    public void level8Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 8 Play",
+            parameters: tutParams
+         );
+      //  print("level 8 Play: " + gold + " Coins");
+    }
+
+    public void level9Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 9 Play",
+            parameters: tutParams
+         );
+       // print("level 9 Play: " + gold + " Coins");
+    }
+
+    public void level10Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 10 Play",
+            parameters: tutParams
+         );
+       // print("level 10 Play: " + gold + " Coins");
+    }
+
+    public void level11Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 11 Play",
+            parameters: tutParams
+         );
+     //   print("level 11 Play: " + gold + " Coins");
+    }
+
+    public void level12Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 12 Play",
+            parameters: tutParams
+         );
+     //  print("level 12 Play: " + gold + " Coins");
+    }
+
+    public void level13Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 13 Play",
+            parameters: tutParams
+         );
+     //   print("level 13 Play: " + gold + " Coins");
+    }
+
+    public void level14Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 14 Play",
+            parameters: tutParams
+         );
+     //   print("level 14 Play: " + gold + " Coins");
+    }
+
+    public void level15Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 15 Play",
+            parameters: tutParams
+         );
+     //   print("level 15 Play: " + gold + " Coins");
+    }
+
+    public void level16Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 16 Play",
+            parameters: tutParams
+         );
+     //   print("level 16 Play: " + gold + " Coins");
+    }
+
+    public void level17Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 17 Play",
+            parameters: tutParams
+         );
+     //   print("level 17 Play: " + gold + " Coins");
+    }
+
+    public void level18Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 18 Play",
+            parameters: tutParams
+         );
+     //   print("level 18 Play: " + gold + " Coins");
+    }
+
+    public void level19Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 19 Play",
+            parameters: tutParams
+         );
+     //   print("level 19 Play: " + gold + " Coins");
+    }
+
+    public void level20Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 20 Play",
+            parameters: tutParams
+         );
+      //  print("level 20 Play: " + gold + " Coins");
+    }
+
+    public void level21Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 21 Play",
+            parameters: tutParams
+         );
+      //  print("level 21 Play: " + gold + " Coins");
+    }
+
+    public void level22Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 22 Play",
+            parameters: tutParams
+         );
+    //    print("level 22 Play: " + gold + " Coins");
+    }
+
+    public void level23Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 23 Play",
+            parameters: tutParams
+         );
+    //    print("level 23 Play: " + gold + " Coins");
+    }
+
+    public void level24Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 24 Play",
+            parameters: tutParams
+         );
+    //    print("level 24 Play: " + gold + " Coins");
+    }
+
+    public void level25Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 25 Play",
+            parameters: tutParams
+         );
+     //   print("level 25 Play: " + gold + " Coins");
+    }
+
+    public void level26Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 26 Play",
+            parameters: tutParams
+         );
+     //   print("level 26 Play: " + gold + " Coins");
+    }
+
+    public void level27Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 27 Play",
+            parameters: tutParams
+         );
+     //   print("level 27 Play: " + gold + " Coins");
+    }
+
+    public void level28Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 28 Play",
+            parameters: tutParams
+         );
+      //  print("level 28 Play: " + gold + " Coins");
+    }
+
+    public void level29Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 29 Play",
+            parameters: tutParams
+         );
+    //    print("level 29 Play: " + gold + " Coins");
+    }
+
+    public void level30Play(int gold)
+    {
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 30 Play",
+            parameters: tutParams
+         );
+    //    print("level 30 Play: " + gold + " Coins");
+    }
+    #endregion
+
+    #region Level Go
+    public void level1go(int gold)
+    {
+        
+            var tutParams = new Dictionary<string, object>();
+            tutParams["Coins"] = gold.ToString();
+
+            FB.LogAppEvent(
+                "Level 1 Go",
+                parameters: tutParams
+             );
+            print("level 1 Go: " + gold + " Coins");
+        }
+
+    public void level2go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 2 Go",
+            parameters: tutParams
+         );
+        print("level 2 Go: " + gold + " Coins");
+    }
+
+    public void level3go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 3 Go",
+            parameters: tutParams
+         );
+        print("level 3 Go: " + gold + " Coins");
+    }
+    public void level4go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 4 Go",
+            parameters: tutParams
+         );
+        print("level 4 Go: " + gold + " Coins");
+    }
+
+    public void level5go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 5 Go",
+            parameters: tutParams
+         );
+        print("level 5 Go: " + gold + " Coins");
+    }
+
+    public void level6go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 6 Go",
+            parameters: tutParams
+         );
+        print("level 6 Go: " + gold + " Coins");
+    }
+
+    public void level7go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 7 Go",
+            parameters: tutParams
+         );
+        print("level 7 Go: " + gold + " Coins");
+    }
+
+    public void level8go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 8 Go",
+            parameters: tutParams
+         );
+        print("level 8 Go: " + gold + " Coins");
+    }
+
+    public void level9go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 9 Go",
+            parameters: tutParams
+         );
+        print("level 9 Go: " + gold + " Coins");
+    }
+
+    public void level10go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 10 Go",
+            parameters: tutParams
+         );
+        print("level 10 Go: " + gold + " Coins");
+    }
+
+    public void level11go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 11 Go",
+            parameters: tutParams
+         );
+        print("level 11 Go: " + gold + " Coins");
+    }
+
+    public void level12go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 12 Go",
+            parameters: tutParams
+         );
+        print("level 12 Go: " + gold + " Coins");
+    }
+
+    public void level13go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 13 Go",
+            parameters: tutParams
+         );
+        print("level 13 Go: " + gold + " Coins");
+    }
+    public void level14go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 14 Go",
+            parameters: tutParams
+         );
+        print("level 14 Go: " + gold + " Coins");
+    }
+
+    public void level15go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 15 Go",
+            parameters: tutParams
+         );
+        print("level 15 Go: " + gold + " Coins");
+    }
+
+    public void level16go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 16 Go",
+            parameters: tutParams
+         );
+        print("level 16 Go: " + gold + " Coins");
+    }
+
+    public void level17go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 17 Go",
+            parameters: tutParams
+         );
+        print("level 17 Go: " + gold + " Coins");
+    }
+
+    public void level18go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 18 Go",
+            parameters: tutParams
+         );
+        print("level 18 Go: " + gold + " Coins");
+    }
+
+    public void level19go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 19 Go",
+            parameters: tutParams
+         );
+        print("level 19 Go: " + gold + " Coins");
+    }
+
+    public void level20go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 20 Go",
+            parameters: tutParams
+         );
+        print("level 20 Go: " + gold + " Coins");
+    }
+
+    public void level21go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 21 Go",
+            parameters: tutParams
+         );
+        print("level 21 Go: " + gold + " Coins");
+    }
+
+    public void level22go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 22 Go",
+            parameters: tutParams
+         );
+        print("level 22 Go: " + gold + " Coins");
+    }
+
+    public void level23go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 23 Go",
+            parameters: tutParams
+         );
+        print("level 23 Go: " + gold + " Coins");
+    }
+    public void level24go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 24 Go",
+            parameters: tutParams
+         );
+        print("level 24 Go: " + gold + " Coins");
+    }
+
+    public void level25go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 25 Go",
+            parameters: tutParams
+         );
+        print("level 25 Go: " + gold + " Coins");
+    }
+
+    public void level26go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 26 Go",
+            parameters: tutParams
+         );
+        print("level 26 Go: " + gold + " Coins");
+    }
+
+    public void level27go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 27 Go",
+            parameters: tutParams
+         );
+        print("level 27 Go: " + gold + " Coins");
+    }
+
+    public void level28go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 28 Go",
+            parameters: tutParams
+         );
+        print("level 28 Go: " + gold + " Coins");
+    }
+
+    public void level29go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 29 Go",
+            parameters: tutParams
+         );
+        print("level 29 Go: " + gold + " Coins");
+    }
+
+    public void level30go(int gold)
+    {
+
+        var tutParams = new Dictionary<string, object>();
+        tutParams["Coins"] = gold.ToString();
+
+        FB.LogAppEvent(
+            "Level 30 Go",
+            parameters: tutParams
+         );
+        print("level 30 Go: " + gold + " Coins");
+    }
+    #endregion
+
+    #region settings
+
+    public void OpenApp()
+    {
+
+        FB.LogAppEvent(
+            "AppOpen");
+         //print("AppOpen");
+    }
+    public void CloseApp()
+    {
+
+        FB.LogAppEvent(
+            "AppClose");
+        //print("AppClose");
+    }
+
+    
 }
+
+    #endregion
+    
+    
 
 
 

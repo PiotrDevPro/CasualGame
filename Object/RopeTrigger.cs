@@ -13,7 +13,7 @@ public class RopeTrigger : MonoBehaviour
     }
     private void Start()
     {
-        _player = GameObject.Find("Default");
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
     private void OnTriggerEnter(Collider coll)
     {

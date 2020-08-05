@@ -10,12 +10,7 @@ public class WinBx : MonoBehaviour
         {
             GameObject drp = GameObject.Find("Drop");
             drp.GetComponent<AudioSource>().Play();
-            if (PlayerPrefs.GetInt("level") == 19)
-            {
-                GetComponent<BoxCollider>().isTrigger = false;
-                GetComponent<Rigidbody>().isKinematic = false;
-            }
-            //crtLayer.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            PlayerController.manage.Vibro();
         }
 
         if (collision.collider.tag == "Player")
@@ -23,9 +18,6 @@ public class WinBx : MonoBehaviour
             
             GetComponent<BoxCollider>().enabled = true;
             GetComponent<Rigidbody>().isKinematic = false;
-           // GameObject playa = GameObject.Find("Default");
-           // playa.GetComponent<Transform>().position = transform.position - transform.up; 
-            //crtLayer.GetComponent<SpriteRenderer>().sortingOrder = 2;
         }
 
         if (collision.collider.tag == "Enemy")

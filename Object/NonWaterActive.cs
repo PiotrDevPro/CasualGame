@@ -26,22 +26,32 @@ public class NonWaterActive : MonoBehaviour
 
         if (col.collider.tag == "Non")
         {
+            count += 1;
                 GameObject smokeEffct = GameObject.Find("SmokeWhite");
                 smokeEffct.GetComponent<ParticleSystem>().Play();
-               // GameObject WaterFireSnd = GameObject.Find("WaterFire");
-               // WaterFireSnd.GetComponent<AudioSource>().Play();
+            if (count >= 3)
+            {
+                GameObject DeadActiv = GameObject.Find("loseTrigWater");
+                DeadActiv.GetComponent<BoxCollider>().enabled = true;
+            }
+           // print(count);
 
         }
         if (col.collider.tag == "NonWater")
-        { 
+        {
             Destroy(gameObject);
         }
-        //  if (col.collider.tag == "Non")
-        //  {
 
-        //   GameObject NormalGround1 = GameObject.Find("NormalGround");
-        //   NormalGround1.GetComponent<BoxCollider>().tag = "Non";
-        //    Destroy(gameObject);
+        if (col.collider.tag == "Grnd")
+        {
+            count += 1;
+             if (count == 1)
+             {
+            GameObject wtrSound = GameObject.Find("wtrSnd");
+            wtrSound.GetComponent<AudioSource>().volume = 0.1f;
+            wtrSound.GetComponent<AudioSource>().Play();
+               }
+        }
 
     }
 }

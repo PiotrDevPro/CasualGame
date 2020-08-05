@@ -10,7 +10,8 @@ public class Stonee : MonoBehaviour
         {
             GameObject drp = GameObject.Find("Drop");
             drp.GetComponent<AudioSource>().Play();
-            
+            PlayerController.manage.Vibro();
+
         }
 
         if(coll.collider.tag == "StoneBlock")
@@ -25,7 +26,9 @@ public class Stonee : MonoBehaviour
         {
             GameObject drp = GameObject.Find("Drop");
             drp.GetComponent<AudioSource>().Play();
-            
+            PlayerController.manage.Vibro();
+
+
         }
     }
 }

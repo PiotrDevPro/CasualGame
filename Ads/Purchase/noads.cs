@@ -8,14 +8,16 @@ public class noads : MonoBehaviour
 {
     public void OnPurchaseComplete(Product product)
     {
-        FbManager.manage.NoAds("No ads no more");
+        
         PlayerPrefs.SetInt("NoAds",1);
         Main.manage._coinFx.SetActive(true);
         Main.manage.NoAdsBtn.GetComponent<Button>().interactable = false;
         GameObject btnActv = GameObject.Find("ButtonAd");
         btnActv.GetComponent<Button>().interactable = false;
         GetComponentInChildren<Text>().color = Color.cyan;
+        //FbManager.manage.NoAds("No ads no more");
         Invoke("TimeToDeactivate", 0.5f);
+        Amplitude.Instance.logRevenue("com.mystream.taptapboyboy.noads", 1, 2.99);
     }
 
     public void OnPurchaseFailure(Product product, PurchaseFailureReason reason)

@@ -7,19 +7,21 @@ public class Drop : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
+        if (PlayerPrefs.GetInt("level")==2 && collision.collider.tag == "Player")
+        {
+            PlayerController.manage.Vibro();
+        }
         if (collision.collider.tag == "Grnd")
         {
             GameObject drp = GameObject.Find("Drop");
             drp.GetComponent<AudioSource>().Play();
-            GameObject boxActive = GameObject.Find("box (1)");
             GameObject crtLayer = GameObject.Find("crate");
-            
+            PlayerController.manage.Vibro();
+
 
             if (PlayerPrefs.GetInt("level") == 13){
                 crtLayer.GetComponent<BoxCollider>().tag = "Untagged";
             }
-
-            
 
             if (PlayerPrefs.GetInt("level") == 28)
             {
@@ -28,24 +30,32 @@ public class Drop : MonoBehaviour
 
             if (PlayerPrefs.GetInt("level") == 13)
             {
-                GetComponent<BoxCollider>().isTrigger = true;
-                Destroy(gameObject, 6f);
+                GetComponent<BoxCollider>().isTrigger = false;
+                GetComponent<Rigidbody>().isKinematic = false;
+                GetComponent<SpriteRenderer>().sortingOrder = 3;
             }
 
 
         }
-
-        if (collision.collider.tag == "Player")
+        if (collision.collider.tag == "ISound")
         {
-            if (PlayerPrefs.GetInt("level") == 13)
-            {
-                GetComponent<Rigidbody>().isKinematic = true;
-                GetComponent<BoxCollider>().enabled = false;
-                GameObject crtLayer = GameObject.Find("crate");
-                crtLayer.GetComponent<SpriteRenderer>().sortingOrder = 0;
-                
-            }
-            //crtLayer.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            GameObject drp = GameObject.Find("Drop");
+            drp.GetComponent<AudioSource>().Play();
+            PlayerController.manage.Vibro();
+        }
+
+            if (collision.collider.tag == "Player")
+        {
+            PlayerController.manage.Vibro();
+        }
+
+            if (collision.collider.tag == "Non")
+        {
+            
+            GameObject drp = GameObject.Find("Drop");
+            drp.GetComponent<AudioSource>().Play();
+            PlayerController.manage.Vibro();
+
         }
 
         if (collision.collider.name == "crate (1)")
@@ -81,7 +91,6 @@ public class Drop : MonoBehaviour
             boxActive.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
             boxActive.GetComponent<BoxCollider>().tag = "Death";
 
-            
         }
 
     }
@@ -97,6 +106,7 @@ public class Drop : MonoBehaviour
         {
             GameObject drp = GameObject.Find("Drop");
             drp.GetComponent<AudioSource>().Play();
+            PlayerController.manage.Vibro();
 
         }
 

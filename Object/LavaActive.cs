@@ -10,6 +10,7 @@ public class LavaActive : MonoBehaviour
     //bool isLavaDeactive = false;
     bool isTapTopClin = false;
     bool isTapCenterClin = false;
+    
     private GameObject clinLava;
     private GameObject clinTopLv12;
     private GameObject clinCenterLv12;
@@ -29,7 +30,8 @@ public class LavaActive : MonoBehaviour
     }
     private void OnCollisionEnter(Collision col)
     {
-        if (col.collider.tag == "water" && PlayerPrefs.GetInt("level") != 19 && PlayerPrefs.GetInt("level")!=22  && !isTapTopClin)
+        if (col.collider.tag == "water" && PlayerPrefs.GetInt("level") != 8 && PlayerPrefs.GetInt("level") != 19 && PlayerPrefs.GetInt("level")!=22 
+            && PlayerPrefs.GetInt("level") != 31 && PlayerPrefs.GetInt("level") != 32 && PlayerPrefs.GetInt("level") != 33 && !isTapTopClin)
         {
             count += 1;
             GameObject SmokeExplosion = GameObject.Find("SmokeExplosionDark");
@@ -58,17 +60,6 @@ public class LavaActive : MonoBehaviour
                             GameObject lavaParticlePlay = GameObject.Find("LavaBoiling");
                         }
 
-
-                        if (PlayerPrefs.GetInt("level") == 8)
-                        {
-                            grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Lava1");
-                            grndNormal.GetComponent<SpriteRenderer>().enabled = true;
-                            grndNormal.GetComponent<BoxCollider>().enabled = true;
-                            GameObject boomSnd = GameObject.Find("Explosive");
-                            boomSnd.GetComponent<AudioSource>().Play();
-
-                        }
-
                     if (PlayerPrefs.GetInt("level") == 9)
                         {
                             grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Lava"); 
@@ -79,7 +70,7 @@ public class LavaActive : MonoBehaviour
 
                         }
 
-                        if (PlayerPrefs.GetInt("level") == 12 && clinTopLv12.transform.position.x < 0)
+                        if (PlayerPrefs.GetInt("level") == 18 && clinTopLv12.transform.position.x < 0)
                         {
                             grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Lavalv12");
                             grndNormal.GetComponent<SpriteRenderer>().enabled = true;
@@ -90,28 +81,7 @@ public class LavaActive : MonoBehaviour
                             spikes.SetActive(false);
                         }
 
-             /*   if (PlayerPrefs.GetInt("level") == 19)
-                {
-                    GameObject grndNormal2 = GameObject.Find("TopGround");
-                    grndNormal2.GetComponent<SpriteRenderer>().enabled = true;
-                    grndNormal2.GetComponent<BoxCollider>().enabled = true;
-                    GameObject boomSnd = GameObject.Find("Explosive");
-                    boomSnd.GetComponent<AudioSource>().Play();
-                    GameObject SmokeExplosion1 = GameObject.Find("SmokeExplosionDark");
-                    SmokeExplosion1.GetComponent<ParticleSystem>().Play();
-                    SmokeExplosion1.GetComponent<Transform>().position = transform.position * 0.8f;
-                    SmokeExplosion1.GetComponent<Transform>().localScale = new Vector2(2f, 2f);
-                }
-                */
-                    if (PlayerPrefs.GetInt("level") == 23)
-                    {
-                        grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Lavalv12");
-                        grndNormal.GetComponent<SpriteRenderer>().enabled = true;
-                        grndNormal.GetComponent<BoxCollider>().enabled = true;
-                        GameObject boomSnd = GameObject.Find("Explosive");
-                        boomSnd.GetComponent<AudioSource>().Play();
-                    }
-                        if (PlayerPrefs.GetInt("level") == 24)
+                if (PlayerPrefs.GetInt("level") == 24)
                     {
                         grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Lavalv12");
                         grndNormal.GetComponent<SpriteRenderer>().enabled = true;
@@ -138,7 +108,7 @@ public class LavaActive : MonoBehaviour
 
         if (col.collider.tag == "water" && PlayerPrefs.GetInt("level") == 22)
         {
-            
+
             GameObject SmokeExplosion = GameObject.Find("SmokeExplosionDark");
             SmokeExplosion.GetComponent<ParticleSystem>().Play();
             SmokeExplosion.GetComponent<Transform>().position = transform.position * 1f;
@@ -148,11 +118,11 @@ public class LavaActive : MonoBehaviour
             SmokeExplosion2D.GetComponent<Transform>().position = transform.position;
             GameObject WaterFireSnd = GameObject.Find("WaterFire");
             WaterFireSnd.GetComponent<AudioSource>().Play();
-            if (PlayerPrefs.GetInt("count")>=4 && transform.position.y < -3)
+            if (PlayerPrefs.GetInt("count") >= 4 && transform.position.y < -3)
             {
-               // GameObject blamfct = GameObject.Find("Blam");
-               // blamfct.transform.position = transform.position * 0.8f;
-               // blamfct.GetComponent<HTSpriteSequencer>().enabled = true;
+                // GameObject blamfct = GameObject.Find("Blam");
+                // blamfct.transform.position = transform.position * 0.8f;
+                // blamfct.GetComponent<HTSpriteSequencer>().enabled = true;
                 GameObject grndNormal = GameObject.Find("NormalGround");
                 grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("LavaStone");
                 grndNormal.GetComponent<SpriteRenderer>().enabled = true;
@@ -164,8 +134,10 @@ public class LavaActive : MonoBehaviour
                 SmokeExplosion1.GetComponent<ParticleSystem>().Play();
                 SmokeExplosion1.GetComponent<Transform>().position = transform.position * 0.8f;
                 SmokeExplosion1.GetComponent<Transform>().localScale = new Vector2(2f, 2f);
+                GameObject spikeobj = GameObject.Find("DeathObj");
+                spikeobj.SetActive(false);
                 activeLava.SetActive(false);
-            }else
+            } else
             {
                 Destroy(gameObject);
             }
@@ -199,7 +171,120 @@ public class LavaActive : MonoBehaviour
                 activeLava.SetActive(false);
             }
         }
+        if (col.collider.tag == "water" && PlayerPrefs.GetInt("level") == 31)
+        {
+            GameObject SmokeExplosion = GameObject.Find("SmokeExplosionDark");
+            SmokeExplosion.GetComponent<ParticleSystem>().Play();
+            SmokeExplosion.GetComponent<Transform>().position = transform.position * 1f;
+            SmokeExplosion.GetComponent<Transform>().localScale = new Vector2(2f, 2f);
+            GameObject SmokeExplosion2D = GameObject.Find("SparkExplosion2D");
+            SmokeExplosion2D.GetComponent<ParticleSystem>().Play();
+            SmokeExplosion2D.GetComponent<Transform>().position = transform.position;
+            GameObject WaterFireSnd = GameObject.Find("WaterFire");
+            WaterFireSnd.GetComponent<AudioSource>().Play();
+            if (PlayerPrefs.GetInt("count") >= 3 )
+            {
+                GameObject grndNormal = GameObject.Find("NormalGround");
+                grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Lavalv12");
+                grndNormal.GetComponent<SpriteRenderer>().enabled = true;
+                grndNormal.GetComponent<BoxCollider>().enabled = true;
+                GameObject activeLava = GameObject.Find("lava");
+                GameObject boomSnd = GameObject.Find("Explosive");
+                boomSnd.GetComponent<AudioSource>().Play();
+                GameObject SmokeExplosion1 = GameObject.Find("SmokeExplosionDark");
+                SmokeExplosion1.GetComponent<ParticleSystem>().Play();
+                SmokeExplosion1.GetComponent<Transform>().position = transform.position * 0.8f;
+                SmokeExplosion1.GetComponent<Transform>().localScale = new Vector2(2f, 2f);
+                activeLava.SetActive(false);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+        if (col.collider.tag == "water" && PlayerPrefs.GetInt("level") == 32)
+        {
+            GameObject SmokeExplosion = GameObject.Find("SmokeExplosionDark");
+            SmokeExplosion.GetComponent<ParticleSystem>().Play();
+            SmokeExplosion.GetComponent<Transform>().position = transform.position * 1f;
+            SmokeExplosion.GetComponent<Transform>().localScale = new Vector2(2f, 2f);
+            GameObject SmokeExplosion2D = GameObject.Find("SparkExplosion2D");
+            SmokeExplosion2D.GetComponent<ParticleSystem>().Play();
+            SmokeExplosion2D.GetComponent<Transform>().position = transform.position;
+            GameObject WaterFireSnd = GameObject.Find("WaterFire");
+            WaterFireSnd.GetComponent<AudioSource>().Play();
+            if (PlayerPrefs.GetInt("count") >= 3)
+            {
+                GameObject grndNormal = GameObject.Find("NormalGround");
+                grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Lavalv12");
+                grndNormal.GetComponent<SpriteRenderer>().enabled = true;
+                grndNormal.GetComponent<BoxCollider>().enabled = true;
+                GameObject activeLava = GameObject.Find("lava");
+                GameObject boomSnd = GameObject.Find("Explosive");
+                boomSnd.GetComponent<AudioSource>().Play();
+                GameObject SmokeExplosion1 = GameObject.Find("SmokeExplosionDark");
+                SmokeExplosion1.GetComponent<ParticleSystem>().Play();
+                SmokeExplosion1.GetComponent<Transform>().position = transform.position * 0.8f;
+                SmokeExplosion1.GetComponent<Transform>().localScale = new Vector2(2f, 2f);
+                GameObject spikeobj = GameObject.Find("DeathObg");
+                spikeobj.SetActive(false);
+                activeLava.SetActive(false);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            if (PlayerPrefs.GetInt("count") >= 2 && transform.position.y > 0)
+            {
+                GameObject grndNormal1 = GameObject.Find("TopGrnd");
+                grndNormal1.GetComponent<SpriteRenderer>().enabled = true;
+                grndNormal1.GetComponent<BoxCollider>().enabled = true;
+                grndNormal1.AddComponent<Rigidbody>().mass = 40;
+                grndNormal1.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionZ;
+                GameObject activeLava = GameObject.Find("lava");
+                GameObject boomSnd = GameObject.Find("Explosive");
+                boomSnd.GetComponent<AudioSource>().Play();
+                GameObject SmokeExplosion1 = GameObject.Find("SmokeExplosionDark");
+                SmokeExplosion1.GetComponent<ParticleSystem>().Play();
+                activeLava.SetActive(false);
+            }
+        }
 
+        if (col.collider.tag == "water" && PlayerPrefs.GetInt("level") == 8)
+        {
+            count += 1;
+            //GameObject SmokeExplosion = GameObject.Find("SmokeExplosionDark");
+            //SmokeExplosion.GetComponent<ParticleSystem>().Play();
+            //SmokeExplosion.GetComponent<Transform>().position = transform.position;
+            GameObject SmokeExplosion2D1 = GameObject.Find("SparkExplosion2D");
+            SmokeExplosion2D1.GetComponent<ParticleSystem>().Play();
+            SmokeExplosion2D1.GetComponent<Transform>().position = transform.position;
+            GameObject WaterFireSnd1 = GameObject.Find("WaterFire");
+            WaterFireSnd1.GetComponent<AudioSource>().Play();
+            GameObject activeLava = GameObject.Find("lava");
+            GameObject grndNormal = GameObject.Find("NormalGround");
+            if (PlayerPrefs.GetInt("count")>=3)
+            {
+                activeLava.SetActive(false);
+                grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Lava1");
+                grndNormal.GetComponent<SpriteRenderer>().enabled = true;
+                grndNormal.GetComponent<BoxCollider>().enabled = true;
+                GameObject boomSnd = GameObject.Find("Explosive");
+                boomSnd.GetComponent<AudioSource>().Play();
+                GameObject SmokeExplosion12 = GameObject.Find("SmokeExplosionDark");
+                SmokeExplosion12.GetComponent<ParticleSystem>().Play();
+                SmokeExplosion12.GetComponent<Transform>().position = transform.position * 0.7f;
+                SmokeExplosion12.GetComponent<Transform>().localScale = new Vector2(1.8f, 1.8f);
+                //GameObject blamfct = GameObject.Find("Blam");
+                //blamfct.transform.position = transform.position * 0.5f;
+                //blamfct.GetComponent<HTSpriteSequencer>().enabled = true;
+                
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
         if (col.collider.tag == "water" && PlayerPrefs.GetInt("level") == 19)
         {
             count += 1;
@@ -222,6 +307,7 @@ public class LavaActive : MonoBehaviour
                 GameObject grndNormal23 = GameObject.Find("TopGround");
                 grndNormal23.GetComponent<SpriteRenderer>().enabled = true;
                 grndNormal23.GetComponent<BoxCollider>().enabled = true;
+                grndNormal23.GetComponent<BoxCollider>().tag = "EnemyDestroy";
                 GameObject boomSnd = GameObject.Find("Explosive");
                 boomSnd.GetComponent<AudioSource>().Play();
                 GameObject SmokeExplosion12 = GameObject.Find("SmokeExplosionDark");
@@ -230,8 +316,34 @@ public class LavaActive : MonoBehaviour
                 SmokeExplosion12.GetComponent<Transform>().localScale = new Vector2(1.8f, 1.8f);
             }
         }
-
-        if (col.collider.tag == "water" && PlayerPrefs.GetInt("level") == 12 && clinTopLv12.transform.position.x >0 && !isTapCenterClin)
+        if (col.collider.tag == "water" && PlayerPrefs.GetInt("level") == 23)
+        {
+            count += 1;
+            //GameObject SmokeExplosion = GameObject.Find("SmokeExplosionDark");
+            //SmokeExplosion.GetComponent<ParticleSystem>().Play();
+            //SmokeExplosion.GetComponent<Transform>().position = transform.position;
+            GameObject SmokeExplosion2D = GameObject.Find("SparkExplosion2D");
+            SmokeExplosion2D.GetComponent<ParticleSystem>().Play();
+            SmokeExplosion2D.GetComponent<Transform>().position = transform.position;
+            GameObject WaterFireSnd = GameObject.Find("WaterFire");
+            WaterFireSnd.GetComponent<AudioSource>().Play();
+            GameObject activeLava = GameObject.Find("lava");
+            if (count == 6)
+            {
+                GameObject grndNormal = GameObject.Find("NormalGround");
+                grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Lavalv12");
+                grndNormal.GetComponent<SpriteRenderer>().enabled = true;
+                grndNormal.GetComponent<BoxCollider>().enabled = true;
+                GameObject boomSnd = GameObject.Find("Explosive");
+                boomSnd.GetComponent<AudioSource>().Play();
+                GameObject SmokeExplosion12 = GameObject.Find("SmokeExplosionDark");
+                SmokeExplosion12.GetComponent<ParticleSystem>().Play();
+                SmokeExplosion12.GetComponent<Transform>().position = transform.position * 0.7f;
+                SmokeExplosion12.GetComponent<Transform>().localScale = new Vector2(1.8f, 1.8f);
+                activeLava.SetActive(false);
+            }
+        }
+        if (col.collider.tag == "water" && PlayerPrefs.GetInt("level") == 18 && clinTopLv12.transform.position.x >0 && !isTapCenterClin)
         {
             count += 1;
             GameObject SmokeExplosion = GameObject.Find("SmokeExplosionDark");
@@ -258,7 +370,7 @@ public class LavaActive : MonoBehaviour
 
             }
         }
-        if (col.collider.tag == "water" && PlayerPrefs.GetInt("level") == 12 && clinCenterLv12.transform.position.y>0)
+        if (col.collider.tag == "water" && PlayerPrefs.GetInt("level") == 18 && clinCenterLv12.transform.position.y>0)
         {
             count += 1;
             GameObject SmokeExplosion = GameObject.Find("SmokeExplosionDark");
@@ -286,6 +398,40 @@ public class LavaActive : MonoBehaviour
             }
         }
 
+        if (col.collider.tag == "water" && PlayerPrefs.GetInt("level") == 33)
+        {
+            count += 1;
+            GameObject SmokeExplosion = GameObject.Find("SmokeExplosionDark");
+            SmokeExplosion.GetComponent<ParticleSystem>().Play();
+            SmokeExplosion.GetComponent<Transform>().position = transform.position * 1f;
+            SmokeExplosion.GetComponent<Transform>().localScale = new Vector2(2f, 2f);
+            GameObject SmokeExplosion2D = GameObject.Find("SparkExplosion2D");
+            SmokeExplosion2D.GetComponent<ParticleSystem>().Play();
+            SmokeExplosion2D.GetComponent<Transform>().position = transform.position;
+            GameObject WaterFireSnd = GameObject.Find("WaterFire");
+            WaterFireSnd.GetComponent<AudioSource>().Play();
+            if (PlayerPrefs.GetInt("count") >= 6)
+            {
+                GameObject grndNormal = GameObject.Find("NormalGround");
+                grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Lavalv12");
+                grndNormal.GetComponent<SpriteRenderer>().enabled = true;
+                grndNormal.GetComponent<BoxCollider>().enabled = true;
+                GameObject activeLava = GameObject.Find("lava");
+                GameObject boomSnd = GameObject.Find("Explosive");
+                boomSnd.GetComponent<AudioSource>().Play();
+                GameObject SmokeExplosion1 = GameObject.Find("SmokeExplosionDark");
+                SmokeExplosion1.GetComponent<ParticleSystem>().Play();
+                SmokeExplosion1.GetComponent<Transform>().position = transform.position * 0.8f;
+                SmokeExplosion1.GetComponent<Transform>().localScale = new Vector2(2f, 2f);
+                //GameObject spikeobj = GameObject.Find("DeathObg");
+                //spikeobj.SetActive(false);
+                activeLava.SetActive(false);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         if (col.collider.name == "crate")
         {
@@ -303,7 +449,6 @@ public class LavaActive : MonoBehaviour
                 GoAway.manage.isFailed = true;
             }
         }
-
         if (col.collider.name == "boat")
         {
             GameObject FireFx = GameObject.Find("SoftFireAdditiveRed");
@@ -317,7 +462,6 @@ public class LavaActive : MonoBehaviour
                 GoAway.manage.isFailed = true;
             }
         }
-
         if (col.collider.name == "hardColl")
         {
             GameObject FireFx = GameObject.Find("SoftFireAdditiveRed");
@@ -335,7 +479,6 @@ public class LavaActive : MonoBehaviour
                 FxActive.SetActive(false);
            // }
         }
-
         if (col.collider.tag == "NonWater")
         {
             count += 1;
@@ -367,7 +510,6 @@ public class LavaActive : MonoBehaviour
                         lavaParticlePlay.GetComponent<ParticleSystem>().Stop();
                     }
 
-
                     if (PlayerPrefs.GetInt("level") == 8)
                     {
                         grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("lavaLv8");
@@ -376,19 +518,15 @@ public class LavaActive : MonoBehaviour
                     if (PlayerPrefs.GetInt("level") == 9)
                     {
                         grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Lava");
-                        
-
+ 
                     }
 
-
-                    if (PlayerPrefs.GetInt("level") == 12)
+                    if (PlayerPrefs.GetInt("level") == 18)
                     {
                         grndNormal.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("lavaLv8");
                         GameObject spikes = GameObject.Find("deadthObj");
                         spikes.SetActive(false);
                     }
-
-                    
 
                     grndNormal.GetComponent<BoxCollider>().enabled = true;
                     // GameObject lavaSnd = GameObject.Find("LavaD");
@@ -399,7 +537,6 @@ public class LavaActive : MonoBehaviour
             }
         }
     }
-
     private void OnTriggerEnter(Collider col)
     {
         if (col.name == "clin1 (1)" && PlayerPrefs.GetInt("level") == 22)
@@ -413,7 +550,7 @@ public class LavaActive : MonoBehaviour
 
     void level12clinTop()
     {
-        if (PlayerPrefs.GetInt("level") == 12)
+        if (PlayerPrefs.GetInt("level") == 18)
         {
             if (clinTopLv12.transform.position.x > 0)
             {
@@ -429,7 +566,8 @@ public class LavaActive : MonoBehaviour
     private void Update()
     {
         level12clinTop();
-       // print(PlayerPrefs.GetInt("count"));
+        //print(transform.position.y);
+        //print(PlayerPrefs.GetInt("count"));
         //print(clinCenterLv12.transform.position.y);
     }
 }

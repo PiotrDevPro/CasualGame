@@ -41,23 +41,26 @@ public class LoopPlatform : MonoBehaviour
             //print("back");
 
         }
+
+        if (col.CompareTag("Box") && PlayerPrefs.GetInt("level")==31)
+        {
+            isMoveBack = true;
+            isMove = false;
+        }
     }
 
     private void OnTriggerStay(Collider col)
     {
         
-    
-       // if (col.name == "left")
-      //  {
-      //     isMove = false;
-      //      isMoveBack = true;
-      //      isStart = false;
-      //  }
-
         if (col.name == "right" && isStart)
         {
             isMoveBack = false;
             isMove = true;
+        }
+        if (col.CompareTag("Non"))
+        {
+            isMoveBack = false;
+            isMove = false;
         }
     }
 

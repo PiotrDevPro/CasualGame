@@ -14,7 +14,9 @@ public class boatOntheWater : MonoBehaviour
             GameObject waterBlow = GameObject.Find("WaterBoiling");
             waterBlow.GetComponent<ParticleSystem>().Play();
             GameObject wtrSound = GameObject.Find("wtrSnd");
+            wtrSound.GetComponent<AudioSource>().volume = 0.5f;
             wtrSound.GetComponent<AudioSource>().Play();
+            PlayerController.manage.Vibro();
         }
     }
 }

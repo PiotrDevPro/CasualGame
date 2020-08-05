@@ -5,6 +5,8 @@ using UnityEngine;
 public class WaterActive : MonoBehaviour
 {
     public static WaterActive manage;
+    public bool isLavaDestroy = false;
+
     public int cnt;
     private void OnCollisionEnter(Collision col)
     {
@@ -12,15 +14,14 @@ public class WaterActive : MonoBehaviour
         {
             PlayerPrefs.SetInt("count", cnt++);
         }
-
-        if (col.collider.tag == "Lava" && PlayerPrefs.GetInt("level") == 19)
-        {
-            
-        }
-
             if (col.collider.tag == "Non")
         {
-            
+            Destroy(gameObject);
+        }
+
+        if (col.collider.tag == "EnemyDestroy")
+        {
+
             Destroy(gameObject);
         }
 
@@ -34,21 +35,30 @@ public class WaterActive : MonoBehaviour
 
         if (col.collider.tag == "Grnd")
         {
-
+          //  cnt += 1;
+          //  if (cnt == 1)
+          //  {
+          //      GameObject wtrSound = GameObject.Find("wtrSnd");
+         //       wtrSound.GetComponent<AudioSource>().volume = 0.04f;
+          //      wtrSound.GetComponent<AudioSource>().Play();
+         //   }
         }
 
 
         if (col.collider.tag == "Enemy")
         {
-            
+            Destroy(gameObject);
         }
     }
-
+    void Latency()
+    {
+        Destroy(gameObject);
+    }
     private void OnTriggerEnter(Collider col)
   {
       if (col.tag == "FailedFromWater")
       {
-            if (PlayerPrefs.GetInt("level") != 12 && PlayerPrefs.GetInt("level") != 22)
+            if (PlayerPrefs.GetInt("level") != 18 && PlayerPrefs.GetInt("level") != 22)
             {
                 GoAway.manage.isFailed = true;
             }
@@ -75,6 +85,6 @@ public class WaterActive : MonoBehaviour
     }
     private void Update()
   {
-
+        
   }
 }

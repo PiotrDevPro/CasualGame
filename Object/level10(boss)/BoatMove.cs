@@ -10,6 +10,7 @@ public class BoatMove : MonoBehaviour
     bool isActiveTrig =  false;
     public bool isWater = false;
     private int countWater = 0;
+    private int counter = 0;
     private int countJump = 0;
 
     //float speed = 1f;
@@ -30,7 +31,7 @@ public class BoatMove : MonoBehaviour
             if (isWater)
             {
 
-                GameObject playa = GameObject.Find("Default");
+                GameObject playa = GameObject.FindGameObjectWithTag("Player");
                 playa.GetComponent<Transform>().position = transform.position * 1f;
                 GetComponent<Rigidbody>().isKinematic = true;
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
@@ -38,6 +39,7 @@ public class BoatMove : MonoBehaviour
                 playa.GetComponentInChildren<Animator>().SetBool("Crouch", false);
                 playa.GetComponentInChildren<Animator>().SetBool("Stand", true);
                 isMove = true;
+                PlayerController.manage.Vibro();
             }
             else
             {
@@ -67,6 +69,7 @@ public class BoatMove : MonoBehaviour
             SmokeExplosion.GetComponent<ParticleSystem>().Play();
             GameObject boomSnd = GameObject.Find("Explosive");
             boomSnd.GetComponent<AudioSource>().Play();
+            PlayerController.manage.Vibro();
         }
 
         if (col.collider.tag == "NonWater")
@@ -77,9 +80,14 @@ public class BoatMove : MonoBehaviour
 
         if (col.collider.tag == "waterlvl10")
         {
-            isWater = true;
-            GameObject NormalGround2 = GameObject.Find("NormalGround");
-            NormalGround2.GetComponent<BoxCollider>().tag = "Untagged";
+            counter += 1;
+            if (counter >= 3)
+            {
+                isWater = true;
+                GameObject NormalGround2 = GameObject.Find("NormalGround");
+                NormalGround2.GetComponent<BoxCollider>().tag = "Untagged";
+            }
+            
         }
     }
     private void OnCollisionStay(Collision col)
@@ -87,7 +95,7 @@ public class BoatMove : MonoBehaviour
         
       if (col.collider.tag == "Player")
         {
-            GameObject playa = GameObject.Find("Default");
+            GameObject playa = GameObject.FindGameObjectWithTag("Player");
             playa.GetComponent<Transform>().position = transform.position;
             playa.GetComponent<Rigidbody>().isKinematic = true;
             playa.GetComponent<Rigidbody>().useGravity = false;
@@ -108,6 +116,7 @@ public class BoatMove : MonoBehaviour
             {
                 GameObject wtrSound = GameObject.Find("wtrSnd");
                 wtrSound.GetComponent<AudioSource>().Play();
+                PlayerController.manage.Vibro();
             }
             
         }
@@ -141,6 +150,7 @@ public class BoatMove : MonoBehaviour
                 GameObject waterboiling1 = GameObject.Find("WaterBoiling");
                 waterboiling1.GetComponent<ParticleSystem>().Play();
             }
+            
 
         }
 
@@ -150,7 +160,7 @@ public class BoatMove : MonoBehaviour
     {
         if (col.collider.tag == "Player")
         {
-            GameObject playa = GameObject.Find("Default");
+            GameObject playa = GameObject.FindGameObjectWithTag("Player");
             playa.GetComponent<Rigidbody>().isKinematic = true;
             playa.GetComponent<Rigidbody>().useGravity = false;
             
@@ -164,7 +174,7 @@ public class BoatMove : MonoBehaviour
             isMove = false;
             isJump = true;
             countJump += 1;
-            GameObject playa = GameObject.Find("Default");
+            GameObject playa = GameObject.FindGameObjectWithTag("Player");
             playa.GetComponent<Rigidbody>().isKinematic = false;
             playa.GetComponent<Rigidbody>().useGravity = true;
 
